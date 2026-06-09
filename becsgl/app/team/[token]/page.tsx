@@ -9,6 +9,7 @@ type Step = 'loading' | 'not-found' | 'pick-week' | 'holes' | 'waiting' | 'locke
 type MatchRecord = {
   id: string; week: number; team_a: number; team_b: number
   scores_a: number[] | null; scores_b: number[] | null
+  drives_a: number[] | null; drives_b: number[] | null
   pts_a: number | null; pts_b: number | null
   submitted_a: boolean; submitted_b: boolean; status: string
 }
@@ -73,7 +74,8 @@ export default function TeamPage() {
       const iAmA = teamId! < oppId
       const newMatch: MatchRecord = {
         id: '', week, team_a: iAmA ? teamId! : oppId, team_b: iAmA ? oppId : teamId!,
-        scores_a: null, scores_b: null, pts_a: null, pts_b: null,
+        scores_a: null, scores_b: null, drives_a: null, drives_b: null,
+        pts_a: null, pts_b: null,
         submitted_a: false, submitted_b: false, status: 'pending'
       }
       setSelMatch(newMatch)
